@@ -1,4 +1,3 @@
-#
 name: Documentation checks
 
 on:
@@ -6,7 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     paths:
-      - 'docs/**'   # Only run on changes to the docs directory
+      - 'src/**'
 
   workflow_dispatch:
     # Manual trigger
@@ -19,20 +18,19 @@ jobs:
   backwards-compatibility:
     uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@work/split-workflows
     with:
-      working-directory: "docs"
+      working-directory: "src"
 
   new-spellcheck:
     uses: canonical/documentation-workflows/.github/workflows/spelling-check.yaml@work/split-workflows
     with:
-      working-directory: "docs"
+      working-directory: "src"
 
   new-woke-check:
     uses: canonical/documentation-workflows/.github/workflows/inclusive-language-check.yaml@work/split-workflows
     with:
-      working-directory: "docs"    
+      working-directory: "src"    
 
   new-linkcheck:
     uses: canonical/documentation-workflows/.github/workflows/link-check.yaml@work/split-workflows
     with:
-      working-directory: "docs"
-
+      working-directory: "src"
