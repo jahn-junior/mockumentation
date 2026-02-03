@@ -1,2 +1,4 @@
 vale
 rst2html
+sphinx-autobuild
+sphinx-reredirects
