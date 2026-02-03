@@ -1,0 +1,38 @@
+#
+name: Documentation checks
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    paths:
+      - 'docs/**'   # Only run on changes to the docs directory
+
+  workflow_dispatch:
+    # Manual trigger
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backwards-compatibility:
+    uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@work/split-workflows
+    with:
+      working-directory: "docs"
+
+  new-spellcheck:
+    uses: canonical/documentation-workflows/.github/workflows/spelling-check.yaml@work/split-workflows
+    with:
+      working-directory: "docs"
+
+  new-woke-check:
+    uses: canonical/documentation-workflows/.github/workflows/inclusive-language-check.yaml@work/split-workflows
+    with:
+      working-directory: "docs"    
+
+  new-linkcheck:
+    uses: canonical/documentation-workflows/.github/workflows/link-check.yaml@work/split-workflows
+    with:
+      working-directory: "docs"
+
