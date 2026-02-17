@@ -16,21 +16,21 @@ concurrency:
 
 jobs:
   backwards-compatibility:
-    uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@work/split-workflows
+    uses: canonical/documentation-workflows/.github/workflows/documentation-checks.yaml@main
     with:
       working-directory: "src"
 
   new-spellcheck:
-    uses: canonical/documentation-workflows/.github/workflows/spelling-check.yaml@work/split-workflows
+    uses: canonical/documentation-workflows/.github/workflows/spelling-check.yaml@main
     with:
       working-directory: "src"
 
   new-woke-check:
-    uses: canonical/documentation-workflows/.github/workflows/inclusive-language-check.yaml@work/split-workflows
+    uses: canonical/documentation-workflows/.github/workflows/inclusive-language-check.yaml@main
     with:
       working-directory: "src"    
 
   new-linkcheck:
-    uses: canonical/documentation-workflows/.github/workflows/link-check.yaml@work/split-workflows
+    uses: canonical/documentation-workflows/.github/workflows/link-check.yaml@main
     with:
       working-directory: "src"
